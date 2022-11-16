@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login for <%=shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="main.css" />
+  </head>
+  <body>
+    <h1>Delete user: <%=shopName%></h1>
+    <form method="POST" action="/userdeleted">
+        <p>Username: <input id="username" type="text" name="username" value="username" /></p>
+        <input type="submit" value="Delete" />
+      </form>
+      <p><a href="/">Back to home page</a></p>
+  </body>
+</html>
