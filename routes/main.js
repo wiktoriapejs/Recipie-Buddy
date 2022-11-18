@@ -103,8 +103,8 @@ app.get('/logout', redirectLogin, (req,res) => {
     [check('email').isEmail()],  //check if imput is correct email
     [check('username').isLength({min:3})], //check if length of username is at least 3
     [check('password').isLength({min: 8})], //check if length of password is at least 8
-    [check('firstname').isAlpha()],  // check if first name contains only letters
-    [check('lastname').isAlpha()],  //check if last name contains only letters
+    [check('first').isAlpha()],  // check if first name contains only letters
+    [check('last').isAlpha()],  //check if last name contains only letters
     function (req,res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {res.redirect('./register'); } //if one of above validation is incorrect redirect to empty register page
