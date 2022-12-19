@@ -12,7 +12,9 @@ const expressSanitizer = require('express-sanitizer');
 // Create the express application object
 const app = express()
 const port = 8000
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+
 
 // Create an input sanitizer
 app.use(expressSanitizer());
@@ -34,9 +36,9 @@ app.use(express.static(__dirname + '/public'));
 // Define the database connection
 const db = mysql.createConnection ({
     host: 'localhost',
-    user: 'appuser',
-    password: 'app2027',
-    database: 'myBookshop'
+    user: 'appuser3',
+    password: 'app2022',
+    database: 'myRecipeBuddy'
 });
 // Connect to the database
 db.connect((err) => {
@@ -60,7 +62,8 @@ app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
 
 // Define our data
-var shopData = {shopName: "Bertie's Books"}
+var shopData = {shopName: "Recipe Buddy"}
+
 
 // Requires the main.js file inside the routes folder passing in the Express app and data as arguments.  All the routes will go in this file
 require("./routes/main")(app, shopData);

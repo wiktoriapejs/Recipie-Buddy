@@ -6,12 +6,21 @@
   </head>
   <body>
     <h1><%=shopName%> Shop</h1>
-    <h2>Here are the books that we sell:</h2>
+    <h3>Here are the food item that you searched:</h3>
     <ul>
-      <% availableBooks.forEach(function(book) { %>
-        <li><%= book.name %>, £<%=book.price%> </li>
+      <% availableFood.forEach(function(food) { %>
+        <h2><%= food.name.toUpperCase() %></h2>
+        <p>Typical values per:<%= food.value %> </p>
+        <p>Unit of the typical value: <%= food.unit %> </p>
+        <p>Carbs: <%= food.carbs%> g</p>
+        <p>Fat: <%= food.fat %> g</p>
+        <p>Protein: <%= food.protein %> g</p>
+        <p>Salt: <%= food.salt %> g</p>
+        <p>Sugar: <%= food.sugar %> g</p>
+           
       <% }) %>
     </ul>
+ 
     <p><a href="/">Back to home page</a></p>
     </body>
 </html>

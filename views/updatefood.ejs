@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Update food <%=shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="main.css" />
+  </head>
+  <body>
+    <h1>Update food item: <%=shopName%></h1>
+    <form action="/searchupdate-result" method="GET">
+      <p>What food item do you want to update?</p>
+      <input id="search-box" type="text" name="keyword" value="Default">
+      <input type="submit" value="Search" >
+    </form>
+
+    
+    <ul>
+        <% availableFood.forEach(function(food) { %>
+          <h2><%= food.name.toUpperCase() %></h2>
+          <form action="/foodupdated" method="POST">
+          <p>Name: <input name="name" type="text"  value="<%= food.name %>" /> </p>
+          <p>Typical values per: <input name="value" type="text"  value="<%= food.value %>" /> </p>
+          <p>Unit of the typical value: <input name="unit" type="text"  value="<%= food.unit %>" /></p>
+          <p>Carbs: <input name="carbs" type="text" value="<%= food.carbs %>" /> g</p>
+          <p>Fat:  <input name="fat" type="text" value="<%= food.fat %>" />g</p>
+          <p>Protein: <input name="protein" type="text"  value="<%= food.protein %>" />g</p>
+          <p>Salt: <input name="salt" type="text"  value="<%= food.salt %>" />g</p>
+          <p>Sugar: <input name="sugar" type="text"  value="<%= food.sugar %>" />g</p>
+
+          <input type="submit" value="Save" /> 
+        </form> 
+
+     
+        <button class ='delete' type="button" onclick="deleteFunction()">Delete</button>
+        <form action="/deletefood" method="POST"  >
+       <input name="name" type="text" style="display:none" value="<%= food.name %>" /> 
+        <input id="deleteit" type="submit" style="display:none" value="delete">  
+       </form>   
+        <% }) %>
+     </ul>
+    
+       <p><a href="/">Back to home page</a></p>
+
+       
+  <script>
+    function deleteFunction()
+    {
+      console.log("TEXT")
+      if (confirm('Are you sure?') == true)
+
+       {       console.log("OLAOLA")
+
+       document.getElementById("deleteit").click(); }
+
+    }
+  </script>
+
+  
+  </body>
+  </html>

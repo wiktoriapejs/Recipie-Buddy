@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to <%=shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="main.css" />
+  </head>
+  <body>
+    <h1><%=shopName%> Shop</h1>
+    <h2>Here are the food that we have:</h2>
+    <table>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>VALUE</th>
+            <th>UNIT</th>
+            <th>CARBS</th>
+            <th>FAT</th>
+            <th>PROTEIN</th>
+            <th>SALT</th>
+            <th>SUGAR</th>
+            <th>AUTHOR</th>
+            <th>CHECKBOX</th>
+            <th>QUANTITY</th>
+
+        </tr>
+
+    </thead>
+    <tbody id = "table">
+            <% for(var i=0; i< food.length; i++) {%>
+                <tr>
+                    <td data-label="NAME"><%=food[i].name%></td>
+                    <td data-label="VALUE" id="value<%=i%>"><%=food[i].value%></td>
+                    <td data-label="UNIT" id="unit<%=i%>"><%=food[i].unit%></td>
+                    <td data-label="CARBS" id="carbs<%=i%>"><%=food[i].carbs%></td>
+                    <td data-label="FAT" id="fat<%=i%>"><%=food[i].fat%></td>
+                    <td data-label="PROTEIN" id="protein<%=i%>"><%=food[i].protein%></td>
+                    <td data-label="SALT" id="salt<%=i%>"><%=food[i].salt%></td>
+                    <td data-label="SUGAR" id="sugar<%=i%>"><%=food[i].sugar%></td>
+                    <td data-label="AUTHOR" id="author<%=i%>"><%=food[i].author%></td> 
+                    <td data-label="SELECT"><input id="checkbox<%=i%>" type="checkbox" name="checkbox<%=i%>"></td>
+                    <td data-label="QUANTITY"><input  id="quantity<%=i%>" name="quantity<%=i%>" value="1" type="number" min="1"></td>
+      </tr>
+               
+            <% } %>    
+    </tbody>
+        </table>
+
+<input onclick="calculate()" type="submit" value="calculate">
+
+        <p>Nutritional information of a recipe or a meal:</p>
+        <p>Total carbs</p> <p id="sumCarbs">0</p>
+        <p>Total fat</p> <p id="sumFat">0</p>
+        <p>Total protein</p> <p id="sumProtein">0</p>
+        <p>Total salt</p><p id="sumSalt">0</p>
+        <p>Total sugar</p><p id="sumSugar">0</p> 
+       
+        
+      
+        <script>
+          function calculate()
+          {
+            var totalCarbs =0;
+            var totalFat =0;
+            var totalProtein =0;
+            var totalSalt = 0;
+            var totalSugar=0;
+
+            for(i=0; i<table.rows.length-1; i++)
+            {
+              if(document.getElementById(`checkbox${i}`).checked)
+              {
+                let carbs = parseFloat(document.getElementById(`carbs${i}`).innerHTML);
+                let fat = parseFloat(document.getElementById(`fat${i}`).innerHTML);
+                let protein = parseFloat(document.getElementById(`protein${i}`).innerHTML);
+                let salt = parseFloat(document.getElementById(`salt${i}`).innerHTML);
+                let sugar = parseFloat(document.getElementById(`sugar${i}`).innerHTML);
+
+                totalCarbs += parseFloat(document.getElementById(`quantity${i}`).value) * carbs;
+                totalFat += parseFloat(document.getElementById(`quantity${i}`).value) * fat;
+                totalProtein += parseFloat(document.getElementById(`quantity${i}`).value) * protein;
+                totalSalt += parseFloat(document.getElementById(`quantity${i}`).value) * salt;
+                totalSugar += parseFloat(document.getElementById(`quantity${i}`).value) * sugar;
+
+                document.getElementById(`sumCarbs`).innerHTML = totalCarbs.toFixed(2);
+                document.getElementById(`sumFat`).innerHTML = totalFat.toFixed(2);
+                document.getElementById(`sumProtein`).innerHTML = totalProtein.toFixed(2);
+                document.getElementById(`sumSalt`).innerHTML =  totalSalt.toFixed(2);
+                document.getElementById(`sumSugar`).innerHTML =  totalSugar.toFixed(2);
+
+              }
+            }
+          }
+    
+
+        </script>
+
+    <p><a href="/">Back to home page</a></p>
+    </body>
+</html>
+
+
+
+
+
+
+
+  
