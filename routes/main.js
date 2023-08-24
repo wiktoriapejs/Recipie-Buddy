@@ -56,7 +56,7 @@ module.exports = function(app, shopData) {
     }
     else if (result == true) {   //if the password is right 
         req.session.userId = req.body.username;
-        res.send('Hi ' + req.sanitize(req.body.username) +':) Login successful! <a href='+'./'+'>Back to Home Page</a>');
+        res.redirect('/')
                                                                      
     }
     else { //if the password or username is incorrect
@@ -109,8 +109,9 @@ app.get('/logout', redirectLogin, (req,res) => {
               return console.error(err.message); //if error throw error
             }
             else{ //if user correctly registered 
-            result = 'Hello '+ req.sanitize(req.body.first) + ' '+ req.sanitize(req.body.last) +' you are now registered! We will send an email to you at ' + req.sanitize(req.body.email);
-            result += ' Your password is: '+ req.sanitize(req.body.password) +' and your hashed password is: '+ req.sanitize(hashedPassword) + '<a href='+'./'+'> Back to Home Page</a>';
+                result = res.redirect('./login');
+
+           
             res.send(result);}
             });
         });
@@ -124,7 +125,7 @@ app.get('/logout', redirectLogin, (req,res) => {
 
 app.post('/foodadded',
         //checking if user input is not empty and checking if relevant data is added for example: number for carbs and letters for name.
-        [check("name").not().isEmpty().isAlpha()],
+        [check("name").not().isEmpty()],
         [check("value").not().isEmpty().isFloat()],
         [check("unit").not().isEmpty()],
         [check("carbs").not().isEmpty().isFloat()],
@@ -133,9 +134,17 @@ app.post('/foodadded',
         [check("salt").not().isEmpty().isFloat()],
         [check("sugar").not().isEmpty().isFloat()] , 
      function (req,res) {
+
         const errors = validationResult(req); //error from validation
-        if (!errors.isEmpty()) {res.redirect('./addfood'); } //if something is incorrect redirect to empty addbook page
+        console.log('Validation errors:', errors.array());
+
+        if (!errors.isEmpty()) 
+        {    console.log('Validation errors:', errors.array());
+        res.redirect('/addfood'); } //if something is incorrect redirect to empty addbook page
+        
      else{
+        console.log('Executing SQL query');
+
            // saving data in database
            let sqlquery = "INSERT INTO food (name, value, unit, carbs, fat, protein, salt, sugar, author) VALUES (?,?,?,?,?,?,?,?,?)" ;
            // execute sql query 
@@ -163,7 +172,7 @@ app.post('/foodadded',
     res.render("search.ejs", shopData);
 });
 app.get('/search-result', 
-        [check("keyword").not().isEmpty().isAlpha()], //chcecking if keyword is not empty and contains only letters                       
+        [check("keyword").not().isEmpty()], //chcecking if keyword is not empty and contains only letters                       
         function (req,res) {
         const errors = validationResult(req); //error from validation
         if (!errors.isEmpty()) {res.redirect('./search'); } //if something is incorrect redirect to empty addbook page
@@ -242,7 +251,7 @@ app.get('/searchupdate-result', [check("keyword").not().isEmpty().isAlpha()], //
     //food updated page
     app.post('/foodupdated',
             //checking if user input is not empty and checking if relevant data is added for example: numbers for carbs and letters for name etc.
-            [check("name").not().isEmpty().isAlpha()],
+            [check("name").not().isEmpty()],
             [check("value").not().isEmpty().isFloat()],
             [check("unit").not().isEmpty()],
             [check("carbs").not().isEmpty().isFloat()],
@@ -282,7 +291,7 @@ app.get('/searchupdate-result', [check("keyword").not().isEmpty().isAlpha()], //
                         return console.error(err.message); //if error throw error
                       }
                       else //when food is updated
-                      res.send(' This food item: ' + req.sanitize(req.body.name) +' is updated! ' + '<a href='+'./'+'> Back to Home Page</a>');
+                      res.redirect("./listfood");
                       });
                      }
                      else{ //if username is not the author

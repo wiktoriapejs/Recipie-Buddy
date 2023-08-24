@@ -3,24 +3,64 @@
   <head>
     <title>Welcome to <%=shopName%></title>
     <link rel="stylesheet"  type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
-    <h1><%=shopName%> Shop</h1>
-    <h3>Here are the food item that you searched:</h3>
-    <ul>
-      <% availableFood.forEach(function(food) { %>
-        <h2><%= food.name.toUpperCase() %></h2>
-        <p>Typical values per:<%= food.value %> </p>
-        <p>Unit of the typical value: <%= food.unit %> </p>
-        <p>Carbs: <%= food.carbs%> g</p>
-        <p>Fat: <%= food.fat %> g</p>
-        <p>Protein: <%= food.protein %> g</p>
-        <p>Salt: <%= food.salt %> g</p>
-        <p>Sugar: <%= food.sugar %> g</p>
-           
-      <% }) %>
-    </ul>
- 
-    <p><a href="/">Back to home page</a></p>
+    <div class="navbar" id="myNav">
+      <a href="#" class="icon" onclick="toggleMenu()">
+        <i class="fas fa-bars" style="color: #fff;"></i>
+      </a>
+      <div class="nav-links">
+        <a href="/" >Home</a>
+        <a href="addfood" >Add your food</a>
+        <a href="search"  >Search for food</a>
+        <a href="searchupdate">Update food</a>
+        <a href="listfood">Food list</a>
+        <a href="login">Login</a>
+        <a href="register">Register with us</a>
+        <a href="logout">Logout</a>
+      </div>
+    </div>
+
+    <h3 style="margin-left: 3rem;">Here are the food items that you searched:</h3>
+    <table class="item-table">
+      <tbody>
+        <% availableFood.forEach(function(food) { %>
+        <tr>
+          <th>Name:</th>
+          <td><%= food.name.toUpperCase() %></td>
+        </tr>
+        <tr>
+          <th>Typical values per:</th>
+          <td><%= food.value %></td>
+        </tr>
+        <tr>
+          <th>Unit of the typical value:</th>
+          <td><%= food.unit %></td>
+        </tr>
+        <tr>
+          <th>Carbs:</th>
+          <td><%= food.carbs %> g</td>
+        </tr>
+        <tr>
+          <th>Fat:</th>
+          <td><%= food.fat %> g</td>
+        </tr>
+        <tr>
+          <th>Protein:</th>
+          <td><%= food.protein %> g</td>
+        </tr>
+        <tr>
+          <th>Salt:</th>
+          <td><%= food.salt %> g</td>
+        </tr>
+        <tr>
+          <th>Sugar:</th>
+          <td><%= food.sugar %> g</td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
     </body>
 </html>

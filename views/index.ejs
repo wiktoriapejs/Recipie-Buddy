@@ -3,16 +3,64 @@
   <head>
     <title>Welcome to <%=shopName%></title>
     <link rel="stylesheet"  type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
-    <h1>Welcome to <%=shopName%></h1>
-    <p><a href="about">About Recipe Buddy</a></p>
-    <p><a href="addfood">Add your food</a></p>
-    <p><a href="search">Search for food</a></p>
-    <p><a href="searchupdate">Update food</a></p>
-    <p><a href="listfood">Food list</a></p>
-    <p><a href="login">Login</a></p>
-    <p><a href="register">Register with us</a></p>
-    <p><a href="logout">Logout</a></p>
+    <div class="navbar" id="myNav">
+      <a href="#" class="icon" onclick="toggleMenu()">
+        <i class="fas fa-bars" style="color: #fff;"></i>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="addfood">Add your food</a>
+        <a href="search">Search for food</a>
+        <a href="searchupdate">Update food</a>
+        <a href="listfood">Food list</a>
+        <a href="login">Login</a>
+        <a href="register">Register with us</a>
+        <a href="logout">Logout</a>
+      </div>
+    </div>
+    
+
+
+   
+
+
+ <div class="fullscreen-image">
+  <div class="about">
+  <div class="main">
+    Welcome to <%=shopName%></div>
+  <p class="description">In our dynamic web application, you can calculate and display nutritional facts for your recipes or meals based on food ingredients in the recipe or the meal. </p>
+</div>
+
+ </div>
+
+
+
+
+
+
+  <script>
+ function toggleMenu() {
+  var x = document.getElementById("myNav");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+
+
+
+
+   </script>
+ 
+  
+
+
   </body>
 </html>
+ 

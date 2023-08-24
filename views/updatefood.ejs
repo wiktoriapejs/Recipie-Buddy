@@ -3,8 +3,27 @@
   <head>
     <title>Update food <%=shopName%></title>
     <link rel="stylesheet"  type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
+    <div class="navbar" id="myNav">
+      <a href="#" class="icon" onclick="toggleMenu()">
+        <i class="fas fa-bars" style="color: #fff;"></i>
+      </a>
+      <div class="nav-links">
+        <a href="/" >Home</a>
+        <a href="addfood">Add your food</a>
+        <a href="search">Search for food</a>
+        <a href="searchupdate" class="active">Update food</a>
+        <a href="listfood">Food list</a>
+        <a href="login">Login</a>
+        <a href="register">Register with us</a>
+        <a href="logout">Logout</a>
+      </div>
+    </div>
+    
+
     <h1>Update food item: <%=shopName%></h1>
     <form action="/searchupdate-result" method="GET">
       <p>What food item do you want to update?</p>
@@ -15,8 +34,9 @@
     
     <ul>
         <% availableFood.forEach(function(food) { %>
-          <h2><%= food.name.toUpperCase() %></h2>
           <form action="/foodupdated" method="POST">
+            <h2><%= food.name.toUpperCase() %></h2>
+
           <p>Name: <input name="name" type="text"  value="<%= food.name %>" /> </p>
           <p>Typical values per: <input name="value" type="text"  value="<%= food.value %>" /> </p>
           <p>Unit of the typical value: <input name="unit" type="text"  value="<%= food.unit %>" /></p>
@@ -27,18 +47,19 @@
           <p>Sugar: <input name="sugar" type="text"  value="<%= food.sugar %>" />g</p>
 
           <input type="submit" value="Save" /> 
+          <button class ='delete' type="button" onclick="deleteFunction()">Delete</button>
         </form> 
 
      
-        <button class ='delete' type="button" onclick="deleteFunction()">Delete</button>
-        <form action="/deletefood" method="POST"  >
-       <input name="name" type="text" style="display:none" value="<%= food.name %>" /> 
-        <input id="deleteit" type="submit" style="display:none" value="delete">  
+        <!-- <button class ='delete' type="button" onclick="deleteFunction()">Delete</button> -->
+        <form style="display: none;" action="/deletefood" method="POST"  >
+       <input name="name" style="display: none;" type="text" style="display:none" value="<%= food.name %>" /> 
+        <input id="deleteit" style="display: none;" type="submit"  value="delete">  
        </form>   
         <% }) %>
      </ul>
     
-       <p><a href="/">Back to home page</a></p>
+      
 
        
   <script>

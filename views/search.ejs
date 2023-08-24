@@ -3,14 +3,52 @@
   <head>
     <title>Search <%=shopName%></title>
     <link rel="stylesheet"  type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
-    <h1>Search <%=shopName%></h1>
+    <div class="navbar" id="myNav">
+      <a href="#" class="icon" onclick="toggleMenu()">
+        <i class="fas fa-bars" style="color: #fff;"></i>
+      </a>
+      <div class="nav-links">
+        <a href="/" >Home</a>
+        <a href="addfood">Add your food</a>
+        <a href="search" class="active">Search for food</a>
+        <a href="searchupdate">Update food</a>
+        <a href="listfood">Food list</a>
+        <a href="login">Login</a>
+        <a href="register">Register with us</a>
+        <a href="logout">Logout</a>
+      </div>
+    </div>
+    
+    
+  
     <form action="/search-result" method="GET">
       <p>What food item do you looking for?</p>
-      <input id="search-box" type="text" name="keyword" value="Default">
+      <input id="search-box" type="text" name="keyword"  placeholder="Banana...">
       <input type="submit" value="Search" >
     </form>
-    <p><a href="/">Back to home page</a></p>
+
+
+
+
+
+
+    <script>
+      function toggleMenu() {
+       var x = document.getElementById("myNav");
+       if (x.className === "navbar") {
+         x.className += " responsive";
+       } else {
+         x.className = "navbar";
+       }
+     }
+     
+     
+     
+     
+        </script>
   </body>
 </html>

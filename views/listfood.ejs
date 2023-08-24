@@ -3,11 +3,28 @@
   <head>
     <title>Welcome to <%=shopName%></title>
     <link rel="stylesheet"  type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
-    <h1><%=shopName%> Shop</h1>
-    <h2>Here are the food that we have:</h2>
+    <div class="navbar" id="myNav">
+      <a href="#" class="icon" onclick="toggleMenu()">
+        <i class="fas fa-bars" style="color: #fff;"></i>
+      </a>
+      <div class="nav-links">
+        <a href="/" >Home</a>
+        <a href="addfood" >Add your food</a>
+        <a href="search"  >Search for food</a>
+        <a href="searchupdate">Update food</a>
+        <a href="listfood" class="active">Food list</a>
+        <a href="login">Login</a>
+        <a href="register">Register with us</a>
+        <a href="logout">Logout</a>
+      </div>
+    </div>
+
     <table>
+      <h1 style="text-align: center;">Here are the food that we have:</h1>
     <thead>
         <tr>
             <th>NAME</th>
@@ -41,18 +58,47 @@
                     <td data-label="QUANTITY"><input  id="quantity<%=i%>" name="quantity<%=i%>" value="1" type="number" min="1"></td>
       </tr>
                
-            <% } %>    
+            <% } %>   
+             
     </tbody>
+    
         </table>
 
 <input onclick="calculate()" type="submit" value="calculate">
+<div>
+<table>
+  <thead>
+    <tr >
+      <th>Nutritional Information</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Total carbs:</td>
+      <td id="sumCarbs">0</td>
+    </tr>
+    <tr>
+      <td>Total fat:</td>
+      <td id="sumFat">0</td>
+    </tr>
+    <tr>
+      <td>Total protein:</td>
+      <td id="sumProtein">0</td>
+    </tr>
+    <tr>
+      <td>Total salt:</td>
+      <td id="sumSalt">0</td>
+    </tr>
+    <tr>
+      <td>Total sugar:</td>
+      <td id="sumSugar">0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-        <p>Nutritional information of a recipe or a meal:</p>
-        <p>Total carbs</p> <p id="sumCarbs">0</p>
-        <p>Total fat</p> <p id="sumFat">0</p>
-        <p>Total protein</p> <p id="sumProtein">0</p>
-        <p>Total salt</p><p id="sumSalt">0</p>
-        <p>Total sugar</p><p id="sumSugar">0</p> 
+
        
         
       
@@ -94,7 +140,17 @@
 
         </script>
 
-    <p><a href="/">Back to home page</a></p>
+<script>
+  function toggleMenu() {
+   var x = document.getElementById("myNav");
+   if (x.className === "navbar") {
+     x.className += " responsive";
+   } else {
+     x.className = "navbar";
+   }
+ }
+ 
+    </script>
     </body>
 </html>
 

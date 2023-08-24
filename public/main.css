@@ -1,7 +1,71 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0%;
+}
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     color: darkcyan;
+}
+h3 {
+  color: #666;
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.description{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 27px;
+  font-style: italic;
+
+}
+
+.about{
+  padding-top: 12rem;
+}
+.main {
+  font-family: Arial, Helvetica, sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+    color: #04AA6D;
+    text-align: center;
+    margin-top: 3rem;
+   
 }
 
 h2 {
@@ -41,7 +105,7 @@ a:link {
     text-decoration: none;
     padding:5px;
   }
-  
+   */
   .search-box
   {
     padding: 2rem 0rem 3rem 0;
@@ -92,3 +156,201 @@ a:link {
   {
     color: cadetblue;
   }
+
+  .navbar {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .navbar a {
+    float:left;
+    display:block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add an active class to highlight the current page */
+  .navbar a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  /* Hide the link that should open and close the navbar on small screens */
+  .navbar .icon {
+    display: none;
+  }
+
+
+.fullscreen-image {
+  width: 100%;
+  height: 100vh;
+  background-image: url('./img/bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+
+form {
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form p {
+  margin-bottom: 10px;
+ 
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"]{
+  width: 96.5%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+button[type="button"] {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+p.back-link {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.item-table{
+  width: 40%;
+  margin-left: 2rem;
+  justify-self: center;
+}
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f5f5f5;
+}
+
+/* Form Styles */
+
+input[type="number"]
+{
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 90%;
+}
+
+
+/* Styles for smaller screens */
+@media screen and (max-width: 820px) {
+  
+.fullscreen-image {
+  width: 100%;
+  height: 100vh; 
+  background-image: url('./img/phonebg1.png');
+  background-size: cover;
+  background-position: center;
+}
+
+  .description{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 10px;
+    font-style: italic;
+  
+  }
+  
+  .about{
+    padding-top: 20rem;
+  }
+  .main {
+    font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: #04AA6D;
+      text-align: center;
+      margin-top: 1;
+     
+  }
+  
+  .navbar a:not(:first-child) {display: none;}
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+  .navbar.responsive {position: relative;}
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+  
+
+
+  
+
+
